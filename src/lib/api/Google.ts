@@ -1,12 +1,15 @@
 import { google } from "googleapis";
 
+const _client_id = process.env.G_CLIENT_ID;
+
 const auth = new google.auth.OAuth2(
-  process.env.G_CLIENT_ID,
+  _client_id,
   process.env.G_CLIENT_SECRET,
   `${process.env.PUBLIC_URL}/login`
 );
 
 export const Google = {
+  auth,
   authUrl: auth.generateAuthUrl({
     access_type: "online",
     scope: [
